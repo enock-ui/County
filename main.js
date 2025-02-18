@@ -1,14 +1,31 @@
-var map = L.map('myMap').setView([ -1.319380, 36.769141], 13);
+var map = L.map('myMap').setView([ -1.319380, 36.769141], 20
+    );
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
-
+// Add a tile layer (e.g., OpenStreetMap)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 const geojsonFiles = [
-"https://raw.githubusercontent.com/enock-ui/County/refs/heads/main_/Kenyancounties.json",
-"https://raw.githubusercontent.com/enock-ui/County/refs/heads/main/Hospitals.geojson",
+    "https://raw.githubusercontent.com/enock-ui/County/refs/heads/main_/Kenyancounties.json",
+    "https://raw.githubusercontent.com/enock-ui/County/refs/heads/main/Hospitals.geojson",
+    
+    ];
 
-];
+// Create markers
+
+// Adjust markers size dynamically as the zoom level changes
+map.on('zoom', function () {
+    map.eachLayer(function(layer) {
+        if (layer instanceof L.Marker) {
+            var newIcon = createCustomMarker(layer.getLatLng().lat, layer.getLatLng().lng);
+            layer.setIcon(newIcon.options.icon);
+        }
+    });
+})
+
+
+
 
 async function loadGeoJSONFiles() {
     try {

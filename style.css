@@ -1,4 +1,6 @@
-#myMap { 
-    height: 600px; 
+
+  /* Make the map container take the full screen size */
+  #myMap {
     width: 100%;
-}
+    height: 100vh;  /* Full height of the viewport */
+  }
