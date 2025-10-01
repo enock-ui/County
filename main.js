@@ -7,7 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Add a tile layer (e.g., OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 const geojsonFiles = [
-    "https://raw.githubusercontent.com/enock-ui/County/refs/heads/main_/Kenyancounties.json",
+    "https://raw.githubusercontent.com/enock-ui/County/refs/heads/main/Kenyancounties.json",
     
     ];
 
