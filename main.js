@@ -29,18 +29,26 @@ const legend = L.control({ position: 'bottomright' });
 legend.onAdd = function (map) {
   const div = L.DomUtil.create('div', 'legend');
   const grades = [0, 50, 300, 500, 1000, 3000, 5000];
-  const labels = ['sparse', 'very low', 'medium', 'high', 'very high', 'densely','very dense'];
+  const labels = ['sparse', 'very low', 'medium', 'high', 'very high', 'densely', 'very dense'];
+
+  div.innerHTML += '<h4>Population Density</h4>';
 
   for (let i = 0; i < grades.length; i++) {
+    const from = grades[i];
+    const to = grades[i + 1];
+    const label = labels[i] ? labels[i] : labels[labels.length - 1]; // fallback
+
     div.innerHTML +=
-      `<i style="background:${getColor(grades[i] + 1)}"></i> ` +
-      grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      `<i style="background:${getColor(from + 1)}"></i> ` +
+      `${from}${to ? '&ndash;' + to : '+'} ` +
+      `<span class="legend-label">(${label})</span><br>`;
   }
 
   return div;
 };
 
 legend.addTo(map);
+
 //Tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
