@@ -28,28 +28,6 @@ const legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function (map) {
   const div = L.DomUtil.create('div', 'legend');
-<<<<<<< HEAD
-
-  // Value ranges (in ascending order)
-  const grades = [0, 50, 300, 500, 1000, 3000, 5000];
-  
-  // Descriptive labels that match each range
-  const labels = [
-    'Sparse',
-    'Very Low',
-    'Medium',
-    'High',
-    'Very High',
-    'Densely',
-    'Very Dense'
-  ];
-
-  // Loop through ranges and labels
-  for (let i = 0; i < grades.length; i++) {
-    div.innerHTML +=
-      `<i style="background:${getColor(grades[i] + 1)}"></i> ` +
-      `${labels[i]} (${grades[i]}${grades[i + 1] ? '&ndash;' + grades[i + 1] : '+'})<br>`;
-=======
   const grades = [0, 50, 300, 500, 1000, 3000, 5000];
   const labels = ['sparse', 'very low', 'medium', 'high', 'very high', 'densely','very dense'];
 
@@ -57,17 +35,12 @@ legend.onAdd = function (map) {
     div.innerHTML +=
       `<i style="background:${getColor(grades[i] + 1)}"></i> ` +
       grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
->>>>>>> main
   }
 
   return div;
 };
 
 legend.addTo(map);
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 //Tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
